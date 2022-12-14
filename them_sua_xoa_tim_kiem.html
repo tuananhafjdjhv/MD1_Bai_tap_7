@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center">
+    <label id="validate" style="color: red"></label><br>
+    <input type="text" id="newStudent" placeholder="The new student...">
+    <button style="background-color: greenyellow; border-radius: 20%" onclick="creatStudent()">Create</button>
+    <br><br>
+    <input type="text" id="" placeholder="The new student...">
+    <button style="border-radius: 20%;background-color: aquamarine">Search</button>
+</div>
+<table border="1" style="width: 100%" cellspacing="0">
+    <caption style="color: blue; font-weight: bolder">STUDENT MANAGE</caption>
+    <br>
+    <tr>
+        <th>STT</th>
+        <th>NAME</th>
+    </tr>
+    <tbody id="drawTable"></tbody>
+</table>
+
+<script>
+    let listStudent = ['Ngan', 'Men'];
+
+    function showListStudent() {
+        let drawTable = " ";
+        for (let i = 0; i < listStudent.length; i++) {
+
+            drawTable += '<tr>' +
+                '<td>' + (i + 1) + '</td>' +
+                '<td>' + listStudent[i] + '</td>' +
+                '<td style="text-align: center">' + '<button onclick="updateStudent()" style="border-radius: 20%; background-color: blue;color: white" >'+'EDIT'+'</button>' + '</td>' +
+                '<td style="text-align: center" >' + '<button style="background-color: red;color: white; border-radius: 20%">'+'DELETE'+'</button>' + '</td>' +
+                '</tr>'
+        }
+        document.getElementById('drawTable').innerHTML = drawTable;
+    }
+
+    showListStudent()
+
+    function creatStudent() {
+        let newStudent = document.getElementById('newStudent').value;
+        if (newStudent.trim()===''){
+            document.getElementById('validate').innerHTML='The name is required! Please try again!'
+        } else {
+            document.getElementById('validate').innerHTML= '<lable style="color: blue">'+'Create Student Scucces'+'</lable>'
+            listStudent.push(newStudent);
+            showListStudent();
+        }
+
+    }
+    function updateStudent(index) {
+        let updateStudent = prompt('Eenter the name to update---->'+listStudent[index])
+        listStudent[index]= updateStudent;
+        if (updateStudent.trim()==='') {
+            document.getElementById('validate').innerHTML=' The name is required! Please try again!'
+        }else {
+            if (updateStudent===listStudent){
+                document.getElementById('validate').innerHTML = 'The name is existed! please try again!'
+                listStudent[index]= updateStudent;
+                showListStudent()
+            }
+        }
+    }
+</script>
+</body>
+</html>

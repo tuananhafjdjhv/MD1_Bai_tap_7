@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let value = +prompt('Enter a number:');
+    let number = [-1, 2, 2, 4, 3, 6, 10, 5, 4, 0]
+    let check = false
+    for (let i = 0; i < number.length; i++) {
+        if (value == number[i]) {
+            number.splice(i, 1)
+            number.push(0);
+            check = true;
+        }
+    }
+    if (!check) {
+        alert("khong ton tai gia tri vua nhap trong mang")
+    }
+    document.write(number)
+
+</script>
+</body>
+</html>
